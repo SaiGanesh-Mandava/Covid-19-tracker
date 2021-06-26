@@ -5,13 +5,13 @@ import { prettyPrintStat } from './util'
 
 function InfoBox({title, cases, total,active,recovered=false,deaths=false, ...props}) {
     let casesClass = '';
-    if(recovered){
-        casesClass="infoBox__cases--recovered";
-    }
-    else if(deaths)
-    casesClass="infoBox__cases--deaths";
+    let activeClass = '';
+    let selectedClass='';
+    casesClass = recovered?'infoBox__cases--recovered':(deaths?'infoBox__cases--deaths':'');
+    activeClass = active && recovered ?'infoBox--recovered':((active &&deaths)?'infoBoxes--deaths':'');
+    selectedClass = active?'infoBox--selected':'';
     return (
-        <Card  onClick={props.onClick} className={`infoBox ${active && "infoBox--selected"}  ${active && recovered && "infoBox--recovered"} ${active && deaths && "infoBox--deaths"}`}>
+        <Card  raised={true}  onClick={props.onClick} className={`infoBox ${selectedClass} ${activeClass}`}>
             
             <CardContent>
                 <Typography className="infoBox__title"  >

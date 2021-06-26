@@ -76,7 +76,7 @@ function App() {
             <img src={img}/>
             <FormControl className="app__dropdown">
                 <Select variant="outlined" onChange={onCountryChange} value={country}>
-                    <MenuItem value="worldwide">World Wide</MenuItem>
+                    <MenuItem  className="dp__bg" value="worldwide">World Wide</MenuItem>
                     {countries.map((country) => (<MenuItem key={country.name} value={country.name}>{country.name}</MenuItem>))}
                 </Select>
             </FormControl>
@@ -88,7 +88,7 @@ function App() {
         </div>
         <Map countries={mapCountries} casesType={casesType} center ={mapCenter} zoom={mapZoom}/>
       </div>
-      <Card className="app__right">
+      <Card raised={true} className="app__right">
         <CardContent>
           <h3>Live Cases by Country</h3>
           <Table countries={tableData}/>
